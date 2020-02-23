@@ -1,7 +1,7 @@
 Package: set
 Type: Package
 Title: Set Operation
-Version: 1.0
+Version: 1.2
 Author: Zhi Jin, Jing Zhang
 Maintainer: Zhi Jin <nalanchongxuan@163.com>
 Description: More easy to get intersection, union or complementary set and combinations.

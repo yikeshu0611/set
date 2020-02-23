@@ -1,8 +1,9 @@
 #' @title Get Union Set for Two Sets
 #' @description Get union set for two sets.
-#' @param a can be numbers, characters, vectors, one dataframe, one matrix or one list.
-#' @param b can be numbers, characters, vectors, one dataframe, one matrix or one list.
+#' @param a see argument x in \code{\link[set]{toVector}}
+#' @param b see argument x in \code{\link[set]{toVector}}
 #' @return union set
+#' @name or2
 #' @export
 #'
 #' @examples
@@ -18,4 +19,32 @@
     b=toVector(b)
     b=unique(b)
     unique(c(a,b))
+}
+
+#' @rdname or2
+#' @export
+"%r%" <- `%or%`
+#' @rdname or2
+#' @export
+"%R%" <- `%or%`
+
+#' @rdname or2
+#' @export
+"|" <- function(a,b) {
+    if (all(is.logical(a),is.logical(b))){
+        base::`|`(a,b)
+    }else if (all(any(is.numeric(a),is.logical(a)),
+                  any(is.numeric(b),is.logical(b)),
+                  length(a)==1,
+                  length(b)==1)){
+        base::`&`(a,b)
+    }else if(any(is.character(a),is.character(b),
+                 is.data.frame(a),is.data.frame(b),
+                 is.matrix(a),is.matrix(b),
+                 is.list(a),is.list(b),
+                 is.array(a),is.array(b))){
+        a %or% b
+    }else{
+        stop('set only support character, dataframe, matrix, list or array')
+    }
 }
