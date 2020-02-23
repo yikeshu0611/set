@@ -14,9 +14,10 @@
 #' A %and% B %or% C
 
 "%or%" <- function(a,b){
-    a=toVector(a)
+    numeric_chekc=all(is.numeric(a),is.numeric(b))
+    a=toVector(a,numeric_chekc)
     a=unique(a)
-    b=toVector(b)
+    b=toVector(b,numeric_chekc)
     b=unique(b)
     unique(c(a,b))
 }
@@ -42,7 +43,9 @@
                  is.data.frame(a),is.data.frame(b),
                  is.matrix(a),is.matrix(b),
                  is.list(a),is.list(b),
-                 is.array(a),is.array(b))){
+                 is.array(a),is.array(b),
+                 all(is.numeric(a),length(a)>1),
+                 all(is.numeric(b),length(b)>1))){
         a %or% b
     }else{
         stop('set only support character, dataframe, matrix, list or array')

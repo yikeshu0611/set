@@ -4,13 +4,15 @@
 \alias{toVector}
 \title{Convet to Character}
 \usage{
-toVector(x)
+toVector(x, as.numeric = FALSE)
 }
 \arguments{
 \item{x}{can be vector, dataframe, matrix, list, array}
+
+\item{as.numeric}{logical, wheter to numeric form}
 }
 \value{
-a character vector
+a character or numeric vector
 }
 \description{
 Convert dataframe, matrix, list, array or vector to character vector.

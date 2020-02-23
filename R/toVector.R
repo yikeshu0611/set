@@ -2,14 +2,14 @@
 #' @description Convert dataframe, matrix, list, array or vector to character vector.
 #'
 #' @param x can be vector, dataframe, matrix, list, array
-#'
-#' @return a character vector
+#' @param as.numeric logical, wheter to numeric form
+#' @return a character or numeric vector
 #' @export
 #'
 #' @examples
 #' df=data.frame(a=c(1,2,3))
 #' toVector(df)
-toVector <- function(x){
+toVector <- function(x,as.numeric=FALSE){
     if (is.data.frame(x)){
         df=x
         for (i in 1:ncol(df)) {
@@ -25,5 +25,10 @@ toVector <- function(x){
         x=as.vector(x)
     }
     names(x)=NULL
-    as.character(x)
+    if (as.numeric){
+        return(as.numeric(x))
+    }else{
+        as.character(x)
+    }
+
 }
