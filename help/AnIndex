@@ -1,0 +1,17 @@
+%and%	and
+%not%	not
+%or%	or
+and	and
+combination	combination
+grep	grep
+grepl	grepl
+grepl_and	grepl
+grepl_not_and	grepl
+grepl_not_or	grepl
+grepl_or	grepl
+grep_and	grep
+grep_not_and	grep
+grep_not_or	grep
+grep_or	grep
+not	not
+or	or
